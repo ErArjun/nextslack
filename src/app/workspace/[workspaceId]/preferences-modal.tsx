@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRemoveWorkspace } from "@/features/workspaces/api/use-remove-workspace";
 import { useUpdateWorkspace } from "@/features/workspaces/api/use-update-workspace";
-import { UseConfirm } from "@/hooks/use-confirm";
+import { useConfirm } from "@/hooks/use-confirm";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { TrashIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,7 @@ export const PreferencesModal = ({
 }: PreferencesModalProps) => {
   const workspaceId = useWorkspaceId();
   const router = useRouter();
-  const [ConfirmDialog, confirm] = UseConfirm(
+  const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "This action cannot be undone"
   );

@@ -1,8 +1,9 @@
 import { useGetChannels } from "@/features/channels/api/use-get-channels";
 import { useCreateChannelModal } from "@/features/channels/store/use-create-channel-modal";
-import { useCurrentMembers } from "@/features/members/api/use-current-members";
+import { useCurrentMember } from "@/features/members/api/use-current-member";
 import { useGetMembers } from "@/features/members/api/use-get-members";
 import { useGetWorkspace } from "@/features/workspaces/api/use-get-workspace";
+import { useChannelId } from "@/hooks/use-channel-id";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import {
   AlertTriangle,
@@ -17,10 +18,11 @@ import { WorkspaceHeader } from "./workspace-header";
 import { WorkspaceSection } from "./workspace-section";
 
 export const WorkspaceSidebar = () => {
+  const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
   const [_open, setOpen] = useCreateChannelModal();
 
-  const { data: member, isLoading: memberLoading } = useCurrentMembers({
+  const { data: member, isLoading: memberLoading } = useCurrentMember({
     workspaceId,
   });
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({
@@ -71,6 +73,7 @@ export const WorkspaceSidebar = () => {
             label={item.name}
             icon={HashIcon}
             id={item._id}
+            variant={channelId === item._id ? "active" : undefined}
           />
         ))}
       </WorkspaceSection>

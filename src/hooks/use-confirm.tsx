@@ -10,7 +10,7 @@ import {
 
 import { useState } from "react";
 
-export const UseConfirm = (
+export const useConfirm = (
   title: string,
   message: string
 ): [() => JSX.Element, () => Promise<unknown>] => {

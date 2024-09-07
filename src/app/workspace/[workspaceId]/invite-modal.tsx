@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useNewJoinCode } from "@/features/workspaces/api/use-new-join-code";
-import { UseConfirm } from "@/hooks/use-confirm";
+import { useConfirm } from "@/hooks/use-confirm";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { CopyIcon, RefreshCcw } from "lucide-react";
 import { toast } from "sonner";
@@ -27,7 +27,7 @@ export const InviteModal = ({
   joinCode,
 }: InviteModalProps) => {
   const workspaceId = useWorkspaceId();
-  const [ConfirmDialog, confirm] = UseConfirm(
+  const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "This will deactivate the current join code and generate a new one"
   );
