@@ -15,17 +15,13 @@ type Options={
 
 type RequestType={
     body:string,
-    image?:Id<"_storage">,
-    workspaceId:Id<"workspaces">,
-    channelId?:Id<"channels">,
-    parentMessageId?:Id<"messages">,
-    conversationId?:Id<"conversations">
+    id:Id<"messages">,
 }
 type ResponseType=Id<"messages"> | null
 
 
-export const useCreateMessage = () => {
-    const mutation=useMutation(api.messages.create)
+export const useUpdateMessage = () => {
+    const mutation=useMutation(api.messages.update)
 
     const [data,setData]=useState<ResponseType| null>(null)
     const [error,setError]=useState<Error|null>(null)
