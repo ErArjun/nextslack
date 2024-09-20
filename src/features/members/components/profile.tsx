@@ -92,9 +92,9 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
       },
       {
         onSuccess: () => {
-          router.replace("/");
+          router.push(`/`);
           toast.success("you have left the workspace successfully");
-          onClose();
+          // onClose();
         },
         onError: () => {
           toast.error("Failed to leave workspace");
