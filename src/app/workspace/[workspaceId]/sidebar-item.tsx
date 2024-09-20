@@ -35,6 +35,20 @@ export const SidebarItem = ({
   variant,
 }: SidebarItemProps) => {
   const workspaceId = useWorkspaceId();
+  if (id === "threads" || id === "drafts") {
+    return (
+      <Button
+        variant="transparent"
+        size="sm"
+        className={cn(sidebarItemVariants({ variant: variant }))}
+      >
+        <>
+          <Icon className="size-3.5 mr-1 shrink-0" />
+          <span className="text-sm truncate">{label}</span>
+        </>
+      </Button>
+    );
+  }
   return (
     <Button
       variant="transparent"
